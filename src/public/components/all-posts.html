@@ -1,11 +1,73 @@
 <div class="container my-2">
-  <h1 class="h1 text-center">Recent Posts</h1>
+    <h1 class="h1 text-center">Recent Posts</h1>
 
-  <div class="row" id="posts-container">
-  </div>
+    <div class="row" id="posts-container"></div>
+    
+    <!--Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title ml-auto" id="exampleModalLabel">Write Your Comment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Comment Title</label>
+                <input type="text" class="form-control" id="c-title" required="required">
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Comment Body</label>
+                <textarea class="form-control"  id="c-body" rows=5 required="required"></textarea>
+            </div>
+
+            </form>
+        </div>
+        <div class="modal-footer ml-auto mr-auto">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="sendCmntBtn"type="button" class="btn btn-primary">Send Comment</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
 </div>
 
-<script src="/app/my-posts.js"></script>
+<script src="/app/all-posts.js"></script>
+
 <script>
-  loadPosts()
+   loadPosts()
+   setTimeout(()=>{
+    let pId;
+    let atag =$('.comment-link')
+    atag.click((ev) => {
+      pId = `${$(ev.target).attr('post-component')}`
+     return pId
+    })
+
+    $('#sendCmntBtn').click(()=>{
+        const title = $('#c-title').val()
+        const body = $('#c-body').val()
+        if(!title || !body){
+            alert('Comment body or title was empty.Kindly try again')
+            return
+            //$('#content')
+        }
+        $( ".modal-backdrop" ).remove()
+        $('body').removeClass("modal-open")
+        const userId = JSON.parse(window.localStorage.user).id;
+       
+        const postId = pId
+        console.log(postId,body,title,userId)
+        $.post('/api/comments', { title, body,userId,postId }, (data) => {
+            $('#exampleModal').modal('hide')
+            $('#content').load('/components/all-comments-postwise.html')
+        })
+        
+    })
+   },500)
+  
 </script>

@@ -12,14 +12,16 @@ function loadPosts() {
                 ${p.body.substr(0, 200)}
                 <a href="#">...read more</a>
               </p>
-              <a href="#" class="card-link">Comment</a>
+              <a href="#" data-toggle="modal" data-target="#exampleModal" class="card-link comment-link" post-component="${p.id}">Comment</a>
               <a href="#" class="card-link">Like</a>
             </div>
           </div>
         </div>
-
+        
         `)
       )
     }
+   
   })
 }
+

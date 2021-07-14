@@ -1,15 +1,21 @@
-#navbar {
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-}
-#footer {
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  position: sticky;
-  bottom: 0px;
-  background-color: var(--light);
+body{
+    background-color: #80ffff;
 }
 
-#content {
+#navbar{
+    position: sticky;
+    top: 0px;
+    z-index:1;
+}
+
+#content{
+
+}
+
+#footer{
+    position: sticky;
+    bottom:0px;
+
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
 }

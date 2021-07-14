@@ -4,7 +4,8 @@
   "description": "```mysql\r create database SocialMediaAppdb;\r create user SMAuser identified with mysql_native_password by 'socialpass';\r grant all privileges on SocialMediaAppdb.*  to SMAuser;\r flush privileges;\r ```",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,14 @@
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kideganesh19/My-Social-Media-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kideganesh19/My-Social-Media-App/issues"
+  },
+  "homepage": "https://github.com/kideganesh19/My-Social-Media-App#readme"
 }

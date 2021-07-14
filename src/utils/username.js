@@ -18,14 +18,13 @@ const OBJECTS = [
     'chalk'
 ]
 
-function genRandomUsername() {
-    const adj = ADJECTIVES[Math.floor(Math.random() * 7)]
-    const obj = OBJECTS[Math.floor(Math.random() * 7)]
-    return `${adj}-${obj}`
+
+function genRandomUsers(){
+    let randomAdj = ADJECTIVES[Math.floor(Math.random()*ADJECTIVES.length)]
+    let randomObj = OBJECTS[Math.floor(Math.random()*OBJECTS.length)]
+    return `${randomAdj}-${randomObj}`
 }
 
-
-
 module.exports = {
-    genRandomUsername
+    genRandomUsers
 }

@@ -1,27 +1,46 @@
-const { Users } = require('../db/models')
-const { genRandomUsername } = require('../utils/username')
+//create a new user
+const { genRandomUsers } = require('../utils/username')
+const { Users } = require('../db/modules')
 
-async function createAnonUser() {
-  const user = await Users.create({
-    username: genRandomUsername(),
-  })
+async function createAnonUser(){
 
-  return user
+    const user = await Users.create({
+        username:genRandomUsers()
+    })
+    //console.log('user controller',user)
+    return user
 }
 
-async function getUserById(id) {
-  // if (!id) throw new Error('user id not provided')
-  // if (typeof id !== 'number') throw new Error('user id should be integer')
 
-  return await Users.findOne({ where: { id } })
+//get all users
+async function getAllUsers(){
+    const users = Users.findAll()
+    return users
 }
 
-async function getUserByUsername(username) {
-  return await Users.findOne({ where: { username }})
+//get users with user id
+async function getUserById(id){
+    const user = await Users.findOne({
+        where: {
+            id
+        }
+    })
+    return user;
 }
 
-module.exports = {
-  createAnonUser,
-  getUserById,
-  getUserByUsername
+
+async function getUserByUsername(username){
+    const user = await Users.findOne({
+        where: {
+            username
+        }
+    })
+    return user;
+}
+
+module.exports={
+    createAnonUser,
+    getUserById,
+    getUserByUsername,
+    getAllUsers
 }
