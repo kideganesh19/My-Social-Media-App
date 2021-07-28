@@ -10,4 +10,4 @@ grant all privileges on SocialMediaAppdb.*  to SMAuser;
 flush privileges;
 ```
 
-In this project you can write the posts, See the posts of other users, See the posts you have written under the my posts tab.
+Using this application, users can create posts, comment on posts and see all existing posts
