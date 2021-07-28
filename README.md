@@ -1,4 +1,4 @@
-#Social Media App
+#My-Social-Media-App
 
 
 ## Database Setup
